@@ -1,11 +1,12 @@
 def llenado(numAlumnos):
     matrix = []
-    for i in range(numAlumnos):           
+    for i in range(numAlumnos):   
+        print(f"Alumno {i+1}:")        
         a =[] 
         for j in range(4):
-            if j ==0:
-                    print("Nombre: ")      
-                    a.append(input())
+            if j == 0:
+                print("Nombre: ")      
+                a.append(input())
             else:
                 print("Nota:",j)    
                 a.append(int(input())) 
@@ -22,14 +23,8 @@ def mostrarAlumnos(lista,numAlumnos):
     j=0
     for i in range(numAlumnos):
         nombreAlumnos.append(lista[i][j])
-
     return nombreAlumnos
         
- 
-    
- 
-        
-
 
 def promedio(lista,numAlumnos):
     listaPromedio = []
@@ -44,6 +39,7 @@ def promedio(lista,numAlumnos):
         print(i)
     return listaPromedio
 
+
 def alumnosAprobados(promedio,nombres):
     #for a in promedio:
     #    if a >= 7:
@@ -52,19 +48,20 @@ def alumnosAprobados(promedio,nombres):
     print(nombres[0],promedio[0])
 
 
-
 def menu():
     while True:
-        print('\nInstitucion Escolar ' '\n')
+        print('-------------------')
+        print('Institucion Escolar')
+        print('-------------------')
         print('[1]: Agregar alumnos')
         print("[2]: Mostrar los alumnos registrados")
-        print('[3]: Promedio de todos los alumnos')
-        print('[4]: Alumnos aprobados')
-        print('[5]: Alumnos reprobados')
-        print('[6]: Calificacion maxima por parcial')
-        print('[7]: Calificacion minima por parcial')
-        print('[8]: Promedio maximo')
-        print('[9]: Promedio minimo')
+        #print('[3]: Promedio de todos los alumnos')
+        #print('[4]: Alumnos aprobados')
+        #print('[5]: Alumnos reprobados')
+        #print('[6]: Calificacion maxima por parcial')
+        #print('[7]: Calificacion minima por parcial')
+        #print('[8]: Promedio maximo')
+        #print('[9]: Promedio minimo')
         print('[10]: Salir del programa')
         op = input('Opcion -> ')
         if op == '1':
@@ -78,9 +75,4 @@ def menu():
             alumnosAprobados(promedioGeneral,nombres)
         elif op == '10':
             break
-             
-
 menu()
-
-
-
