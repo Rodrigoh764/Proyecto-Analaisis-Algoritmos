@@ -116,6 +116,22 @@ def parcialMinimo(lista,numAlumnos):
                     numMin.append(lista[i][j])
     print("Tercer parcial",min(numMin))
 
+def promedioMaximo(listaPromedio):
+    print(listaPromedio)
+    maxPromedio = listaPromedio[0]
+    for x in listaPromedio:
+        if x > maxPromedio:
+            maxPromedio = x
+    print("Maximo:",maxPromedio)
+
+def promedioMinimo(listaPromedio):
+    print(listaPromedio)
+    minPromedio = listaPromedio[0]
+    for x in listaPromedio:
+        if x < minPromedio:
+            minPromedio = x
+    print("Maximo:",minPromedio)
+
 def menu():
     while True:
         print('\n-------------------')
@@ -148,6 +164,15 @@ def menu():
         elif op == '6':
             print("\n->Parcial Maximo")
             parcialMaximo(lista,numAlumnos)
+        elif op == '7':
+            print("\n->Parcial Minimo")
+            parcialMaximo(lista,numAlumnos)
+        elif op == '8':
+            print("\n->Promedio Maximo")
+            promedioMaximo(lista)
+        elif op == '9':
+            print("\n->Promedio Minimo")
+            promedioMinimo(lista)
         elif op == '10':
             break
 menu()
