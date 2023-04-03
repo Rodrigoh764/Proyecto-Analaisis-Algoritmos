@@ -128,7 +128,7 @@ def promedioMinimo(listaPromedio):
     print(listaPromedio)
     minPromedio = listaPromedio[0]
     for x in listaPromedio:
-        if x < minPromedio:
+        if x > minPromedio:
             minPromedio = x
     print("Maximo:",minPromedio)
 
