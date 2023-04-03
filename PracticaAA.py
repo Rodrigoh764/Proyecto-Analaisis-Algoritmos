@@ -1,4 +1,4 @@
-def llenado(numAlumnos):
+def llenado(numAlumnos):#SI SE LLENA
     matrix = []
     for i in range(numAlumnos):   
         print(f"Alumno {i+1}:")        
@@ -18,15 +18,15 @@ def mostrarAlumnos(lista,numAlumnos):
     nombreAlumnos = []
     for i in range(numAlumnos):
         for j in range(4): 
-            print(lista[i][j], end = " ") 
+            print(lista[i][j], end = " ") #MOSTRAMOS LOS NOMBRES DE LOS ALUMNOS
         print()
     j=0
     for i in range(numAlumnos):
-        nombreAlumnos.append(lista[i][j])
+        nombreAlumnos.append(lista[i][j]) #GUARDAMOS LOS NOMBRES DE LOS ALUMNOS
     return nombreAlumnos
         
 
-def promedio(lista,numAlumnos):
+def promedio(lista,numAlumnos):#ARROJA EL PROMEDIO PERO NO EL NOMBRE DE LOS ALUMNOS
     listaPromedio = []
     for i in range(numAlumnos):
         total=0 
@@ -35,8 +35,12 @@ def promedio(lista,numAlumnos):
                 total = total + lista[i][j]
                 promedio = total/3
         listaPromedio.append(promedio)
+
+
     for i in listaPromedio:
         print(i)
+  
+    
     return listaPromedio
 
 
