@@ -39,10 +39,9 @@ def promedioAlumno(lista,numAlumnos):
                 total = lista[i][j] + total
                 promedio = total/3
         print(f"Estudiante: {lista[i][0]}")
-        listaPromedio.append(lista[i][0])
+        #listaPromedio.append(lista[i][0])
         print(f"Promedio: {promedio}")
         listaPromedio.append(promedio)
-    print(listaPromedio)
     return listaPromedio
 
 
@@ -55,8 +54,29 @@ def promedioGeneral(listaPromedio,numAlumnos):
     print (f"--> {promedioGeneral}")
 
 
-#def alumnosAprobados():
+def alumnosAprobados(listaPromedio,numAlumnos):
+    cont = 0
+    for i in range(numAlumnos):
+        if listaPromedio[i] >= 7:
+            cont += cont + 1
+            print(listaPromedio[i])
+            print("Aprobado")
+    print(cont)
+    
 
+def alumnosReprobados(listaPromedio,numAlumnos):
+    cont = 0
+    for i in range(numAlumnos):
+        if listaPromedio[i] < 7:
+            cont += cont + 1
+            print(listaPromedio[i])
+            print("Reprobado")
+    print(cont)
+
+
+#def maxPromedioParcial():
+
+#def minPromedioParcial():
 
 
 def menu():
@@ -66,9 +86,10 @@ def menu():
         print('-------------------')
         print('[1]: Agregar alumnos')
         print("[2]: Mostrar los alumnos registrados")
-        print('[3]: Promedio')
-        print('[4]: Alumnos aprobados')
-        #print('[5]: Alumnos reprobados')
+        print('[3]: Promedio por alumno')
+        print('[4]: Promedio general')
+        print('[5]: Alumnos aprobados')
+        print('[6]: Alumnos reprobados')
         #print('[6]: Calificacion maxima por parcial')
         #print('[7]: Calificacion minima por parcial')
         #print('[8]: Promedio maximo')
@@ -79,16 +100,20 @@ def menu():
             numAlumnos = int(input("\nCuantos alumnos desea registrar: "))
             lista = llenado(numAlumnos)
         elif op == '2':
-            print("\n>Alumnos registrados")
+            print("\n->Alumnos registrados")
             mostrarAlumnos(lista,numAlumnos)
         elif op == '3':
-            print("\n>Promedio por alumno")
+            print("\n->Promedio por alumno")
             listaPromedio = promedioAlumno(lista,numAlumnos)
-            print("\>Promedio general")
-            #promedioGeneral(listaPromedio,numAlumnos)
         elif op == '4':
-            print("\n>Alumnos aprobados")
-            #alumnosAprobados(promedioGeneral,nombres)
+            print("\n->Promedio general")
+            promedioGeneral(listaPromedio,numAlumnos)
+        elif op == '5':
+            print("\n->Alumnos aprobados")
+            alumnosAprobados(listaPromedio,numAlumnos)
+        elif op == '6':
+            print("\n->Alumnos reprobados")
+            alumnosReprobados(listaPromedio,numAlumnos)
         elif op == '10':
             break
 menu()
