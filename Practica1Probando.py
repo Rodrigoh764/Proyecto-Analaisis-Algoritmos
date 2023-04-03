@@ -20,64 +20,122 @@ def llenado(numAlumnos):
                 else:
                     a.append(nota)
         matrix.append(a)
+    #print(matrix)
     return matrix
     
 
 def mostrarAlumnos(lista,numAlumnos):
+    nombreAlumnos = []
     for i in range(numAlumnos):
         for j in range(4): 
             print(lista[i][j], end = " ") 
         print()
+        nombreAlumnos.append(lista[i][0])
+    return nombreAlumnos
 
 
-def promedioAlumno(lista,numAlumnos):
+def promedio(lista,numAlumnos):
     listaPromedio = []
     for i in range(numAlumnos): 
         total = 0
+        cont = 0
         for j in range(4):
             if j > 0:
                 total = lista[i][j] + total
                 promedio = total/3
         print(f"Estudiante: {lista[i][0]}")
-        #listaPromedio.append(lista[i][0])
         print(f"Promedio: {promedio}")
         listaPromedio.append(promedio)
+    for p in listaPromedio:
+        cont += p
+    print()    
+    print("--> Promedio General:")
+    print(cont/numAlumnos)
     return listaPromedio
 
 
-def promedioGeneral(listaPromedio,numAlumnos):
-    promedioGeneral = 0
-    for i in range(numAlumnos):
-        promedioGeneral += listaPromedio[i]
-    print(f"Alumnos en total: {numAlumnos}")
-    promedioGeneral = promedioGeneral/numAlumnos
-    print (f"--> {promedioGeneral}")
-
-
-def alumnosAprobados(listaPromedio,numAlumnos):
+def alumnosAprobados(listaPromedio,numAlumnos,nombreAlumnos):
     cont = 0
     for i in range(numAlumnos):
         if listaPromedio[i] >= 7:
-            cont += cont + 1
-            print(listaPromedio[i])
-            print("Aprobado")
-    print(cont)
-    
+            cont = cont + 1
+            print(nombreAlumnos[i],listaPromedio[i])
+    print(f"Alumnos aprobados: {cont}")
 
-def alumnosReprobados(listaPromedio,numAlumnos):
+    
+def alumnosReprobados(listaPromedio,numAlumnos,nombreAlumnos):
     cont = 0
     for i in range(numAlumnos):
         if listaPromedio[i] < 7:
-            cont += cont + 1
-            print(listaPromedio[i])
-            print("Reprobado")
-    print(cont)
+            cont = cont + 1
+            print(nombreAlumnos[i],listaPromedio[i])
+    print(f"Alumnos reprobados: {cont}")
 
 
-#def maxPromedioParcial():
+def parcialMaximo(lista,numAlumnos):
+    numMax = []
+    for i in range(numAlumnos):
+        for j in range(4):
+            if j == 1:
+                numMax.append(lista[i][j])
+    print(lista[i][j])
+    print("Parcial 1:",max(numMax))
 
-#def minPromedioParcial():
+    numMax = []
+    for i in range(numAlumnos):
+        for j in range(4):
+            if j == 2:
+                numMax.append(lista[i][j])
+    print(lista[i][j])
+    print("Parcial 2:",max(numMax))
 
+    numMax = []
+    for i in range(numAlumnos):
+        for j in range(4):
+            if j == 3:
+                numMax.append(lista[i][j])
+    print(lista[i][j])
+    print("Parcial 3:",max(numMax))
+
+
+
+def parcialMinimo(lista,numAlumnos):
+    numMin = []
+    for i in range(numAlumnos):
+        for j in range(4):
+            if j == 1:
+                numMin.append(lista[i][j])
+    print("Parcial 1:",min(numMin))
+    numMin = []
+    for i in range(numAlumnos):
+        for j in range(4):
+            if j == 2:
+                numMin.append(lista[i][j])
+    print("Parcial 1:",min(numMin))
+    numMin = []
+    for i in range(numAlumnos):
+        for j in range(4):
+            if j == 3:
+                numMin.append(lista[i][j])
+    print("Parcial 1:",min(numMin))
+
+
+def promedioMaximo(listaPromedio):
+    print(listaPromedio)
+    maxPromedio = listaPromedio[0]
+    for x in listaPromedio:
+        if x > maxPromedio:
+            maxPromedio = x
+    print("Maximo:",maxPromedio)
+
+
+def promedioMinimo(listaPromedio):
+    print(listaPromedio)
+    minPromedio = listaPromedio[0]
+    for x in listaPromedio:
+        if x < minPromedio:
+            minPromedio = x
+    print("Minimo:",minPromedio)
 
 def menu():
     while True:
@@ -86,34 +144,41 @@ def menu():
         print('-------------------')
         print('[1]: Agregar alumnos')
         print("[2]: Mostrar los alumnos registrados")
-        print('[3]: Promedio por alumno')
-        print('[4]: Promedio general')
-        print('[5]: Alumnos aprobados')
-        print('[6]: Alumnos reprobados')
-        #print('[6]: Calificacion maxima por parcial')
-        #print('[7]: Calificacion minima por parcial')
-        #print('[8]: Promedio maximo')
-        #print('[9]: Promedio minimo')
-        #print('[10]: Salir del programa')
+        print('[3]: Promedio')
+        print('[4]: Alumnos aprobados')
+        print('[5]: Alumnos reprobados')
+        print('[6]: Calificación maxima por parcial')
+        print('[7]: Calificación minima por parcial')
+        print('[8]: Promedio maximo')
+        print('[9]: Promedio minimo')
+        print('[10]: Salir del programa')
         op = input('Opcion -> ')
         if op == '1':
             numAlumnos = int(input("\nCuantos alumnos desea registrar: "))
             lista = llenado(numAlumnos)
         elif op == '2':
             print("\n->Alumnos registrados")
-            mostrarAlumnos(lista,numAlumnos)
+            nombreAlumnos = mostrarAlumnos(lista,numAlumnos)
         elif op == '3':
-            print("\n->Promedio por alumno")
-            listaPromedio = promedioAlumno(lista,numAlumnos)
+            print("\n->Promedio por estudiante")
+            listaPromedio = promedio(lista,numAlumnos)
         elif op == '4':
-            print("\n->Promedio general")
-            promedioGeneral(listaPromedio,numAlumnos)
-        elif op == '5':
             print("\n->Alumnos aprobados")
-            alumnosAprobados(listaPromedio,numAlumnos)
-        elif op == '6':
+            alumnosAprobados(listaPromedio,numAlumnos,nombreAlumnos)
+        elif op == '5':
             print("\n->Alumnos reprobados")
-            alumnosReprobados(listaPromedio,numAlumnos)
+            alumnosReprobados(listaPromedio,numAlumnos,nombreAlumnos)
+        elif op == '6':
+            print("\n->Califiacion Max por parcial")
+            parcialMaximo(lista,numAlumnos)
+        elif op == '7':
+            print("\n->Califiacion Min por parcial")
+        elif op == '8':
+            print("\n->Promedio maximo")
+            promedioMaximo(listaPromedio)
+        elif op == '9':
+            print("\n->Promedio minimo")
+            promedioMinimo(listaPromedio)
         elif op == '10':
             break
 menu()
